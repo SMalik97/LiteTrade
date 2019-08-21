@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="My Match"
+        android:id="@+id/my_match"
+        android:icon="@drawable/match"/>
+    <item android:title="Account"
+        android:id="@+id/account"
+        android:icon="@drawable/account"/>
+    <item android:title="Wallet"
+        android:id="@+id/wallet"
+        android:icon="@drawable/wallet"/>
+</menu>
+

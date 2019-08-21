@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "554896399057",
+    "firebase_url": "https://litetrade-9c8ee.firebaseio.com",
+    "project_id": "litetrade-9c8ee",
+    "storage_bucket": "litetrade-9c8ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554896399057:android:2b04658a5c3f72a6",
+        "android_client_info": {
+          "package_name": "com.litetrade.gfc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554896399057-vlt6hnvbnes9c6ntolfvsldmj2mlnp7p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.litetrade.gfc",
+            "certificate_hash": "723f57997e2ba68848768df79297e14aa594d288"
+          }
+        },
+        {
+          "client_id": "554896399057-vuoglm47rom994s1jgps13e2kahb3iu5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCooiTbXvffdUuX7qhKuRDoZmEjwpC8c-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554896399057-vuoglm47rom994s1jgps13e2kahb3iu5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

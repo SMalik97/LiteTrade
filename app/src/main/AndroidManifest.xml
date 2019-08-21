@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.litetrade.gfc">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="LiteTrade"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".img_upload"></activity>
+        <activity android:name=".email_verify" />
+        <activity android:name=".Razorpay" />
+        <activity android:name=".Add_money" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".LoggedPage" />
+        <activity android:name=".SignUp" />
+        <activity
+            android:name=".KYC_update"
+            android:label="KYC UPDATE" />
+        <activity
+            android:name=".BankDetails_update"
+            android:label="BANK DETAILS" />
+        <activity android:name=".LiteTradeSplash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.razorpay.ApiKey"
+            android:value="rzp_test_QybM6EEM11HTsU" />
+    </application>
+
+</manifest>
