@@ -39,7 +39,7 @@ public class email_verify extends AppCompatActivity {
     Button submit;
     private FirebaseAuth mAuth;
     String url="https://hsgawb.com/LiteTrade/reg_user.php";
-    String name,ph,emailid,dob,pass,gen;
+    String name,ph,emailid,dob,pass,gen,ref;
     ProgressDialog progressDialog;
     String login_status="No";
     String login_phone="Null";
@@ -66,6 +66,8 @@ public class email_verify extends AppCompatActivity {
         dob=getIntent().getExtras().getString("dob");
         pass=getIntent().getExtras().getString("pass");
         gen=getIntent().getExtras().getString("gen");
+        ref=getIntent().getExtras().getString("ref");
+
 
         uemail.setText("To verify that "+emailid+" is your gmail id you have to submit your gmail password");
 
@@ -159,6 +161,7 @@ public class email_verify extends AppCompatActivity {
                     params.put("dob", dob);
                     params.put("pass", convertPassMD5(pass));
                     params.put("gen", gen);
+                    params.put("ref",ref);
 
                     return params;
                 }

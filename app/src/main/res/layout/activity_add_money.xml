@@ -7,6 +7,38 @@
     android:orientation="vertical"
     android:background="@drawable/colorfull_accnt2"
     android:gravity="center">
+    <TextView
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bal"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        />
+    <EditText
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/email"
+        android:hint="Enter Email"
+
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        />
+    <EditText
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/phone"
+        android:hint="Enter Phone Number"
+        android:inputType="number"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        />
     <EditText
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
@@ -14,44 +46,45 @@
         android:layout_height="wrap_content"
         android:id="@+id/money"
         android:hint="Enter Ammount"
+        android:inputType="number"
         android:textColorHint="#ffffff"
         android:textColor="#ffffff"
         />
-    <LinearLayout
-        android:gravity="center"
-        android:layout_marginTop="17dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
+<!--    <LinearLayout-->
+<!--        android:gravity="center"-->
+<!--        android:layout_marginTop="17dp"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="horizontal"-->
+<!--        >-->
 
 
-        <Button
-            android:id="@+id/one"
-            android:layout_gravity="right"
-            android:text="100"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"/>
+<!--        <Button-->
+<!--            android:id="@+id/one"-->
+<!--            android:layout_gravity="right"-->
+<!--            android:text="100"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="20dp"/>-->
 
-        <Button
-            android:id="@+id/two"
-            android:layout_gravity="center"
-            android:text="200"
-            android:layout_marginLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+<!--        <Button-->
+<!--            android:id="@+id/two"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="200"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
 
-        <Button
-            android:id="@+id/three"
-            android:layout_gravity="left"
-            android:layout_marginLeft="20dp"
-            android:text="300"
+<!--        <Button-->
+<!--            android:id="@+id/three"-->
+<!--            android:layout_gravity="left"-->
+<!--            android:layout_marginLeft="20dp"-->
+<!--            android:text="300"-->
 
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
     <Button
         android:text="Add"
         android:textAllCaps="false"
@@ -65,5 +98,4 @@
         android:layout_height="wrap_content"
         android:id="@+id/ok"
         />
-
 </LinearLayout>

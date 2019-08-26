@@ -47,6 +47,7 @@ public class Bottom_myMatch extends Fragment {
     String login_phone="Null";
     List<List_Data_fd> list_data_fd;
     String p,ei;
+    int ftb;
 
 
 
@@ -63,6 +64,8 @@ public class Bottom_myMatch extends Fragment {
         tb=(TextView) view.findViewById(R.id.tb);
         wb=(TextView) view.findViewById(R.id.wb);
         noti=(TextView) view.findViewById(R.id.noti);
+
+
 
         list_data_fd=new ArrayList<>();
 
@@ -125,11 +128,21 @@ public class Bottom_myMatch extends Fragment {
                     gt.setVisibility(View.VISIBLE);
                     re.setVisibility(View.INVISIBLE);
                     ge.setVisibility(View.INVISIBLE);
+                   /* rt.setText("$ " + re.getText().toString());
+                    gt.setText("$ " + ge.getText().toString());
 
-                    rt.setText("Rs. " + re.getText().toString());
-                    gt.setText("Rs. " + ge.getText().toString());
+                    double total_balance2=Double.parseDouble(tb.getText().toString());
+                    int a2=Integer.parseInt(re.getText().toString());
+                    int b2=Integer.parseInt(ge.getText().toString());
+                    int aa=a2+b2;
+                    //tb.setText(total_balance2-aa);
 
-                    tb.setText(total_balance-(a+b)+"");
+*/                  int a2=Integer.parseInt(re.getText().toString());
+                    int b2=Integer.parseInt(ge.getText().toString());
+                   // Toast.makeText(getContext(), a2+"   "+b2, Toast.LENGTH_LONG).show();
+                    int tb2=Integer.parseInt(tb.getText().toString());
+                    ftb=tb2-(a2+b2);
+                    tb.setText(ftb+"");
 
                     getemail();
                     challenge c = new challenge();
@@ -162,7 +175,7 @@ public class Bottom_myMatch extends Fragment {
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-
+                            Toast.makeText(getContext(), response+"", Toast.LENGTH_LONG).show();
                             noti.setVisibility(View.VISIBLE);
                             noti.setText("Submit Successful!");
                             new Handler().postDelayed(new Runnable() {
@@ -237,14 +250,20 @@ public class Bottom_myMatch extends Fragment {
                             List_Data_fd listDatafd = new List_Data_fd(
                                     ob.getString("red_challenge"),
                                     ob.getString("green_challenge"),
-                                    ob.getString("total_balance"),
+                                    ob.getString("wallet_balance"),
                                     ob.getString("wining_blance"));
                             list_data_fd.add(listDatafd);
+
+                            wb.setText(listDatafd.getTotalAmount());
+                            tb.setText(listDatafd.getWinAmount());
+                            rt.setText(listDatafd.getRedChallenge());
+                            gt.setText(listDatafd.getGreenChallenge());
+
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        //Toast.makeText(getContext(), "Error Occurred!"+response, Toast.LENGTH_LONG).show();
+                        Toast.makeText(getContext(), "Error Occurred!"+response, Toast.LENGTH_LONG).show();
 
                     }
                 }

@@ -38,13 +38,17 @@ public class SignUp extends AppCompatActivity {
     DatePickerDialog datePicker;
     int year,month,dayofMonth;
     TextView dob;
-    EditText fn,email,ph,pass,repass;
+    EditText fn,email,ph,pass,repass,ref;
     Button submit;
     RadioButton m,f;
     String gen="";
     ProgressDialog progressDialog;
     int f1;
-    String url1="https://hsgawb.com/LiteTrade/check_ph.php";
+    int f2=2;
+    String r="";
+    //String url1="https://hsgawb.com/LiteTrade/check_ph.php";
+    String url1="https://hsgawb.com/LiteTrade/ref_check.php";
+
     List<List_Data_cp> list_data_cp;
 
 
@@ -58,21 +62,21 @@ public class SignUp extends AppCompatActivity {
         getSupportActionBar().hide();
 
         //initialize progress dialog
-        progressDialog=new ProgressDialog(this);
+        progressDialog =new ProgressDialog(this);
         progressDialog.setMessage("Processing...");
         progressDialog.setCancelable(true);
 
-        dob=(TextView)findViewById(R.id.dob);
-        fn=(EditText)findViewById(R.id.fn);
-        email=(EditText)findViewById(R.id.email);
-        ph=(EditText)findViewById(R.id.ph);
-        pass=(EditText)findViewById(R.id.pass);
-        repass=(EditText)findViewById(R.id.repass);
-        submit=(Button)findViewById(R.id.submit);
-        m=(RadioButton)findViewById(R.id.m);
-        f=(RadioButton)findViewById(R.id.f);
 
-
+        dob= (TextView)findViewById(R.id.dob);
+        ref= (EditText) findViewById(R.id.ref);
+        fn= (EditText)findViewById(R.id.fn);
+        email= (EditText)findViewById(R.id.email);
+        ph= (EditText)findViewById(R.id.ph);
+        pass= (EditText)findViewById(R.id.pass);
+        repass= (EditText)findViewById(R.id.repass);
+        submit= (Button)findViewById(R.id.submit);
+        m= (RadioButton)findViewById(R.id.m);
+        f= (RadioButton)findViewById(R.id.f);
 
 
         submit.setOnClickListener(new View.OnClickListener() {
@@ -113,7 +117,6 @@ public class SignUp extends AppCompatActivity {
         });
 
 
-
         dob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,7 +138,6 @@ public class SignUp extends AppCompatActivity {
         });
 
 
-
     }
     class check_ph implements Runnable{
         @Override
@@ -149,43 +151,77 @@ public class SignUp extends AppCompatActivity {
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject ob = array.getJSONObject(i);
                             List_Data_cp listDatacp = new List_Data_cp(
+                                    ob.getString("use_ref_id"),
                                     ob.getString("email"));
                             list_data_cp.add(listDatacp);
+                            String[] Reffer = new String[array.length()];
+                            Reffer[i] = listDatacp.getReffer();
+
                             String[] PhNo = new String[array.length()];
                             PhNo[i] = listDatacp.getPhone();
+                          //  Toast.makeText(SignUp.this, ref.getText().toString().trim()+"", Toast.LENGTH_SHORT).show();
 
                             if (PhNo[i].equals(email.getText().toString().trim())) {
                                 f1 = 1;
-                            } else {
-                                f1= 0;
-                            }
 
+                                break;
+                            } else {
+                                f1 = 0;
+                                if (ref.getText().toString().trim().equals("")){
+                                    r="NA";
+
+                                }else {
+
+                                    if (Reffer[i].equals(ref.getText().toString().trim())) {
+                                        f2 = 1;
+                                        break;
+                                    } else {
+                                        f2 = 0;
+                                    }
+                                }
+
+                            }
                         }
+                        //Toast.makeText(SignUp.this, ""+f2, Toast.LENGTH_SHORT).show();
                         if (f1 == 1) {
                             showDialog();
                             progressDialog.dismiss();
-                        } else {
-                            Intent i=new Intent(getApplicationContext(),email_verify.class);
-                            i.putExtra("name",fn.getText().toString());
-                            i.putExtra("email",email.getText().toString());
-                            i.putExtra("phone",ph.getText().toString());
-                            i.putExtra("dob",dob.getText().toString());
-                            i.putExtra("pass",pass.getText().toString());
-                            i.putExtra("gen",gen);
+                        } else if (f2==0) {
+                            Toast.makeText(SignUp.this, "else part", Toast.LENGTH_SHORT).show();
+                            show1Dialog();
+                            progressDialog.dismiss();}
+                        else {
+                            Intent i = new Intent(getApplicationContext(), email_verify.class);
+                            i.putExtra("name", fn.getText().toString());
+                            i.putExtra("email", email.getText().toString());
+                            i.putExtra("phone", ph.getText().toString());
+                            i.putExtra("dob", dob.getText().toString());
+                            i.putExtra("pass", pass.getText().toString());
+                            if (r.equals("NA")){
+                                i.putExtra("ref", "");
+                            }else {
+                                i.putExtra("ref", ref.getText().toString());
+                            }
+
+                            i.putExtra("gen", gen);
                             startActivity(i);
                         }
 
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        Intent i=new Intent(getApplicationContext(),email_verify.class);
-                        i.putExtra("name",fn.getText().toString());
-                        i.putExtra("email",email.getText().toString());
-                        i.putExtra("phone",ph.getText().toString());
-                        i.putExtra("dob",dob.getText().toString());
-                        i.putExtra("pass",pass.getText().toString());
-                        i.putExtra("gen",gen);
-                        startActivity(i);
+                       /* Intent i = new Intent(getApplicationContext(), email_verify.class);
+                        i.putExtra("name", fn.getText().toString());
+                        i.putExtra("email", email.getText().toString());
+                        i.putExtra("phone", ph.getText().toString());
+                        i.putExtra("dob", dob.getText().toString());
+                        i.putExtra("pass", pass.getText().toString());
+                        i.putExtra("ref", ref.getText().toString());
+                        i.putExtra("gen", gen);
+                        startActivity(i);*/
+                        Toast.makeText(SignUp.this, "Error!", Toast.LENGTH_SHORT).show();
                     }
+
+
                 }
             }, new Response.ErrorListener() {
                 @Override
@@ -234,4 +270,25 @@ public class SignUp extends AppCompatActivity {
         }).show();
     }
 
-        }
+    public void show1Dialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+
+        dialog.setTitle("Message");
+
+        dialog.setMessage("Invalid Referral Code");
+
+        dialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+
+            @Override
+
+            public void onClick(DialogInterface dialog, int which) {
+
+
+                dialog.dismiss();
+
+            }
+
+        }).show();
+    }
+
+}

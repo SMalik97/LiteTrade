@@ -7,14 +7,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.razorpay.Checkout;
 import com.razorpay.PaymentResultListener;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Razorpay extends Activity implements PaymentResultListener {
     EditText eamil;
     EditText phone;
+    String up_bal="";
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -68,7 +79,12 @@ public class Razorpay extends Activity implements PaymentResultListener {
     @Override
     public void onPaymentSuccess(String razorpayPaymentID) {
         try {
-            Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Payment Successful: " + razorpayPaymentID+eamil, Toast.LENGTH_SHORT).show();
+
+
+          //  total_bal tb=new total_bal();
+          //  new Thread(tb).start();
+
         } catch (Exception e) {
             Log.e(TAG, "Exception in onPaymentSuccess", e);
         }
@@ -83,4 +99,58 @@ public class Razorpay extends Activity implements PaymentResultListener {
             Log.e(TAG, "Exception in onPaymentError", e);
         }
     }
+
+
+  /*  class total_bal implements Runnable{
+
+        @Override
+        public void run() {
+            final String Email,Number,Id;
+            Email=eamil.getText().toString().trim();
+            //Number=num_kyc.getText().toString().trim();
+
+            StringRequest stringRequest=new StringRequest(Request.Method.POST, up_bal, new Response.Listener<String>() {
+                @Override
+                public void onResponse(final String response) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(Razorpay.this, response, Toast.LENGTH_SHORT).show();
+
+
+                            finish();
+                        }
+                    });
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+
+                        public void run() {
+                            Toast.makeText(Razorpay.this, "Some Error Occurred!", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    //error.printStackTrace();
+                }
+            })
+
+            {
+                @Override
+                protected Map<String,String> getParams() throws AuthFailureError {
+                    Map<String,String> params=new HashMap<String,String>();
+                    params.put("Email",Email);
+                    params.put("Number",Number);
+                    return params;
+                }
+            };
+            RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
+
+        }
+    }*/
+
 }

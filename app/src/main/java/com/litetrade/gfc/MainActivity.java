@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         for (int i = 0; i < array.length(); i++) {
                             JSONObject ob = array.getJSONObject(i);
                             List_Data_cp listDatacp = new List_Data_cp(
-                                    ob.getString("email"));
+                                    ob.getString("email"), ob.getString("email"));
                             list_data_cp.add(listDatacp);
                             String[] PhNo=new String[array.length()];
                             PhNo[i]=listDatacp.getPhone();

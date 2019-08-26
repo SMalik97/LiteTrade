@@ -23,7 +23,12 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                app:cardElevation="10dp">
-
+                <TextView
+                    android:id="@+id/email1"
+                    android:visibility="invisible"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -49,15 +54,18 @@
                         android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ruppees_symbol" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
+                            android:text="$  "
+                            android:textSize="23dp"
+                            android:textColor="#ffffff"/>
+
+                        <TextView
+                            android:id="@+id/bal1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
                             android:textColor="#ffffff"
                             android:textSize="18dp" />
                     </LinearLayout>
@@ -103,15 +111,18 @@
                         android:layout_marginTop="20dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ruppees_symbol" />
-
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
+                            android:text="$  "
+                            android:textSize="23dp"
+                            android:textColor="#ffffff"/>
+
+                        <TextView
+                            android:id="@+id/depo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
                             android:textColor="#ffffff"
                             android:textSize="18dp" />
                     </LinearLayout>
@@ -141,15 +152,61 @@
                         android:layout_marginTop="15dp"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            android:layout_width="34dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/ruppees_symbol" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="$  "
+                            android:textSize="23dp"
+                            android:textColor="#ffffff"/>
+
+                        <TextView
+                            android:id="@+id/win_bal1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#ffffff"
+                            android:textSize="18dp" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="19dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginRight="19dp"
+                        android:background="#E4E2E2" />
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="My Earning"
+                        android:textColor="#ffffff"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="0.0"
+                            android:text="$  "
+                            android:textSize="23dp"
+                            android:textColor="#ffffff"/>
+
+                        <TextView
+                            android:id="@+id/myearn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
                             android:textColor="#ffffff"
                             android:textSize="18dp" />
 

@@ -72,7 +72,7 @@ public class KYC_update extends AppCompatActivity {
 
 
         num_kyc=(EditText)findViewById(R.id.num_kyc);
-        pic1=(TextView) findViewById(R.id.pic1);
+        //pic1=(TextView) findViewById(R.id.pic1);
 
         kyc=(Button)findViewById(R.id.kyc);
         getSupportActionBar().hide();
